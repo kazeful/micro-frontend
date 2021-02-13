@@ -1,0 +1,54 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "extends": ["plugin:vue/recommended", "@antfu/eslint-config-basic"],
+  "rules": {
+    "vue/max-attributes-per-line": "off",
+    "vue/no-v-html": "off",
+    "vue/require-prop-types": "off",
+    "vue/require-default-prop": "off",
+    "vue/multi-word-component-names": "off",
+
+    // https://vuejs.org/guide/extras/reactivity-transform.html#reactive-props-destructure
+    // reactivity transform
+    // 'vue/no-setup-props-destructure': 'off',
+
+    // 'vue/component-tags-order': ['error', {
+    //   order: ['script', 'template', 'style'],
+    // }],
+    "vue/block-tag-newline": [
+      "error",
+      {
+        "singleline": "always",
+        "multiline": "always"
+      }
+    ],
+    "vue/component-name-in-template-casing": ["error", "PascalCase"],
+    "vue/component-options-name-casing": ["error", "PascalCase"],
+    // In Vue 3, using either camelCase or kebab-case for your custom event name does not limit its use in v-on.
+    // Not so with vue2, Don't enable it
+    // 'vue/custom-event-name-casing': ['error', 'camelCase'],
+    "vue/define-macros-order": [
+      "error",
+      {
+        "order": ["defineProps", "defineEmits"]
+      }
+    ],
+    "vue/html-comment-content-spacing": [
+      "error",
+      "always",
+      {
+        "exceptions": ["-"]
+      }
+    ],
+    "vue/no-restricted-v-bind": ["error", "/^v-/"],
+    "vue/no-useless-v-bind": "error",
+    "vue/padding-line-between-blocks": ["error", "always"],
+    "vue/prefer-separate-static-class": "error"
+  }
+}
