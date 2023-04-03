@@ -2,10 +2,6 @@ module.exports = {
   name: 'common',
   filename: 'mf.js',
   exposes: {
-    // 组件库 全部引入
-    './components': './src/components',
-    // 组件库 按需引入
-    './components/NTable': './src/components/NTable',
     // 指令库 全部引入
     './directives': './src/directives',
     // 指令库 按需引入

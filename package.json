@@ -5,13 +5,13 @@
   "description": "Implementation of micro front end based on module federation",
   "author": "Wind",
   "license": "MIT",
-  "homepage": "https://github.com/moaningwind/micro-frontend#readme",
+  "homepage": "https://github.com/kazeful/micro-frontend#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moaningwind/micro-frontend.git"
+    "url": "git+https://github.com/kazeful/micro-frontend.git"
   },
   "bugs": {
-    "url": "https://github.com/moaningwind/micro-frontend/issues"
+    "url": "https://github.com/kazeful/micro-frontend/issues"
   },
   "keywords": [
     "Module Federation",
@@ -27,11 +27,11 @@
     "dev": "pnpm -r --filter=!docs dev",
     "docs:build": "pnpm --filter docs build",
     "docs:dev": "pnpm --filter docs dev",
-    "lint": "eslint ."
+    "lint": "eslint . --ext .js,.vue"
   },
   "devDependencies": {
-    "@antfu/eslint-config-basic": "^0.34.1",
-    "eslint": "^8.31.0",
-    "eslint-plugin-vue": "^9.8.0"
+    "@antfu/eslint-config-basic": "^0.38.2",
+    "eslint": "^8.37.0",
+    "eslint-plugin-vue": "^9.10.0"
   }
 }

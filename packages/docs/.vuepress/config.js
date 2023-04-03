@@ -14,10 +14,6 @@ module.exports = {
             link: '/guide/',
           },
           {
-            text: '组件',
-            link: '/components/',
-          },
-          {
             text: '指令',
             link: '/directives/',
           },
@@ -40,7 +36,6 @@ module.exports = {
               children: ['/guide/other/issues', '/guide/other/changelog'],
             },
           ],
-          '/components/': ['/components/ntable'],
           '/directives/': ['/directives/motion'],
         },
       },
