@@ -1,7 +1,7 @@
 {
   "name": "vue-common",
   "version": "1.0.0",
-  "description": "Vue technology stack common modules",
+  "description": "common modules",
   "main": "index.js",
   "scripts": {
     "build": "vue-cli-service build",
@@ -15,13 +15,12 @@
     "jsencrypt": "^3.2.1",
     "lodash-es": "^4.17.21",
     "sm-crypto": "^0.3.10",
-    "vue": "^2.7.8",
+    "vue": "^2.7.14",
     "xss": "^1.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@vue/cli-plugin-babel": "~5.0.8",
-    "@vue/cli-service": "~5.0.8",
-    "webpack": "^5.74.0"
+    "@vue/cli-service": "~5.0.8"
   }
 }

@@ -4,6 +4,7 @@ module.exports = {
   remotes: {
     '@common': 'common@/COMMON_ASSETS/mf.js',
   },
+  // Configuring this option will make HMR not work
   exposes: {
     './App.vue': './src/App.vue',
   },

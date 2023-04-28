@@ -1,7 +1,7 @@
 {
-  "name": "vue-base",
+  "name": "vue-micro",
   "version": "1.0.0",
-  "description": "vue technology stack of base station",
+  "description": "micro application",
   "main": "index.js",
   "scripts": {
     "build": "vue-cli-service build",
@@ -9,12 +9,11 @@
   },
   "dependencies": {
     "element-ui": "^2.15.9",
-    "vue": "^2.7.8"
+    "vue": "^2.7.14"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@vue/cli-plugin-babel": "~5.0.8",
-    "@vue/cli-service": "~5.0.8",
-    "webpack": "^5.74.0"
+    "@vue/cli-service": "~5.0.8"
   }
 }

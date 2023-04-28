@@ -1,7 +1,7 @@
 {
   "name": "micro-frontend",
   "version": "0.0.0",
-  "packageManager": "pnpm@7.13.4",
+  "packageManager": "pnpm@8.3.1",
   "description": "Implementation of micro front end based on module federation",
   "author": "Wind",
   "license": "MIT",
@@ -20,7 +20,7 @@
   "main": "index.js",
   "engines": {
     "node": ">=16",
-    "pnpm": ">=7.12"
+    "pnpm": ">=8.0"
   },
   "scripts": {
     "build": "pnpm -r --filter=!docs build",
