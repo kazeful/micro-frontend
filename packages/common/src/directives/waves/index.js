@@ -1,10 +1,9 @@
-import { on } from 'element-ui/src/utils/dom'
 import './waves.css'
 
 const waves = {
   bind(el, binding) {
     const eventType = binding.modifiers.dblclick ? 'dblclick' : 'click'
-    on(el, eventType, handler)
+    el.addEventListener(eventType, handler)
     function handler(e) {
       const opts = Object.assign(
         {
