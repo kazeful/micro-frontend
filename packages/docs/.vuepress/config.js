@@ -50,7 +50,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@': '/../vue-common/src',
+        '@': '/../common/src',
       },
     },
   },
