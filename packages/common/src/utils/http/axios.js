@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { MessageBox } from 'element-ui'
-import { isUndefined } from 'lodash-es'
 import xss from 'xss'
+import JSEncrypt from 'jsencrypt'
 import axiosCanceler from './axiosCancel'
-import httpErrorConfig from './httpErrorConfig'
+import httpConfig from './httpConfig'
+
+const crypt = new JSEncrypt()
+crypt.getKey()
 
 class HttpRequest {
   constructor(options) {
@@ -18,20 +21,15 @@ class HttpRequest {
         const { params, data, headers } = config
         const {
           authenticationScheme = 'Bearer',
-          ignoreCancelToken: ignoreCancelTokenGlobal,
+          ignoreCancelToken = false,
         } = this.options
         const {
           withToken = true,
           isXssTest = true,
           isEncrypt = true,
-          ignoreCancelToken,
         } = config
 
-        const ignoreCancel = isUndefined(ignoreCancelToken)
-          ? ignoreCancelTokenGlobal
-          : ignoreCancelToken
-
-        !ignoreCancel && axiosCanceler.addPending(config)
+        !ignoreCancelToken && axiosCanceler.addPending(config)
 
         const token = 'getToken()'
         if (token && withToken) {
@@ -40,32 +38,26 @@ class HttpRequest {
             ? `${authenticationScheme} ${token}`
             : token
         }
-
-        const xssError = '您当前提交的字符可能威胁系统安全，不允许提交！'
-        const xssErrorTip = () => {
-          MessageBox.confirm(xssError, '警告', {
-            showCancelButton: false,
-            type: 'warning',
-          })
-          this.axiosCancel()
-        }
-
         if (params) {
-          if (isXssTest !== false && xss(JSON.stringify(params))) {
-            xssErrorTip()
-            return Promise.reject(xssError)
-          }
+          if (isXssTest !== false && xss(JSON.stringify(params)))
+            // eslint-disable-next-line prefer-promise-reject-errors
+            return Promise.reject(10000)
 
-          isEncrypt !== false && this.encrypt(params)
+          if (isEncrypt !== false) {
+            for (const [key, value] of Object.entries(params))
+              params[key] = this.encrypt(value)
+          }
         }
 
         if (data) {
-          if (isXssTest !== false && xss(JSON.stringify(data))) {
-            xssErrorTip()
-            return Promise.reject(xssError)
-          }
+          if (isXssTest !== false && xss(JSON.stringify(data)))
+            // eslint-disable-next-line prefer-promise-reject-errors
+            return Promise.reject(10000)
 
-          isEncrypt !== false && this.encrypt(data)
+          if (isEncrypt !== false) {
+            for (const [key, value] of Object.entries(data))
+              data[key] = this.encrypt(value)
+          }
         }
 
         return config
@@ -76,22 +68,21 @@ class HttpRequest {
     )
 
     this.axiosInstance.interceptors.response.use(
-      (res) => {
-        return this.decrypt(res)
+      (response) => {
+        response.data = this.decrypt(response.data)
+        return response
       },
       (error) => {
-        const errorInfo = error.response
-        if (errorInfo) {
-          const { title, content, type } = httpErrorConfig
-          content.forEach((item) => {
-            if (item.code === errorInfo.status) {
-              MessageBox.confirm(item.tip, title, {
-                showCancelButton: false,
-                type,
-              })
-            }
-          })
-        }
+        const status = error?.data.code
+        httpConfig.find(({ code, type = 'error', title = '错误', tip }) => {
+          if (code === status) {
+            MessageBox.confirm(tip, title, {
+              showCancelButton: false,
+              type,
+            })
+          }
+          return code === status
+        })
         return Promise.reject(error)
       },
     )
@@ -103,7 +94,7 @@ class HttpRequest {
         .request(options)
         .then((res) => {
           const { isReturnNativeResponse = false } = options
-          resolve(isReturnNativeResponse ? res : res.data.data)
+          resolve(isReturnNativeResponse ? res : res.data)
         })
         .catch((e) => {
           reject(e)
@@ -112,11 +103,11 @@ class HttpRequest {
   }
 
   encrypt(data) {
-    return data
+    return crypt.encrypt(JSON.stringify(data))
   }
 
   decrypt(data) {
-    return data
+    return JSON.parse(crypt.decrypt(data))
   }
 }
 
