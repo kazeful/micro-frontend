@@ -14,7 +14,26 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0(eslint@8.37.0)
 
-  packages/base:
+  packages/docs:
+    dependencies:
+      core-js:
+        specifier: ^2.6.12
+        version: 2.6.12
+      element-ui:
+        specifier: ^2.15.9
+        version: 2.15.9(vue@2.7.14)
+      vue:
+        specifier: ^2.7.14
+        version: 2.7.14
+    devDependencies:
+      vuepress:
+        specifier: ^1.9.7
+        version: 1.9.7
+      vuepress-plugin-demo-container:
+        specifier: ^0.2.0
+        version: 0.2.0
+
+  packages/vue-base:
     dependencies:
       element-ui:
         specifier: ^2.15.9
@@ -33,7 +52,7 @@ importers:
         specifier: ~5.0.8
         version: 5.0.8(@babel/core@7.19.3)(vue@2.7.14)
 
-  packages/common:
+  packages/vue-common:
     dependencies:
       axios:
         specifier: ~0.21.4
@@ -73,26 +92,7 @@ importers:
         specifier: ~5.0.8
         version: 5.0.8(@babel/core@7.19.3)(vue@2.7.14)
 
-  packages/docs:
-    dependencies:
-      core-js:
-        specifier: ^2.6.12
-        version: 2.6.12
-      element-ui:
-        specifier: ^2.15.9
-        version: 2.15.9(vue@2.7.14)
-      vue:
-        specifier: ^2.7.14
-        version: 2.7.14
-    devDependencies:
-      vuepress:
-        specifier: ^1.9.7
-        version: 1.9.7
-      vuepress-plugin-demo-container:
-        specifier: ^0.2.0
-        version: 0.2.0
-
-  packages/micro:
+  packages/vue-micro:
     dependencies:
       element-ui:
         specifier: ^2.15.9
@@ -3488,6 +3488,7 @@ packages:
 
   /bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -6545,6 +6546,7 @@ packages:
 
   /file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -8889,6 +8891,7 @@ packages:
 
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
