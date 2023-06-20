@@ -2,6 +2,7 @@ import axios from 'axios'
 import { MessageBox } from 'element-ui'
 import xss from 'xss'
 import JSEncrypt from 'jsencrypt'
+import { isPlainObject } from 'lodash-es'
 import axiosCanceler from './axiosCancel'
 import httpConfig from './httpConfig'
 
@@ -100,6 +101,30 @@ class HttpRequest {
           reject(e)
         })
     })
+  }
+
+  encryptPrimitiveValuesRecursive(val) {
+    function isPrimitive(val) {
+      return (typeof val !== 'object' && typeof val !== 'function') || val === null
+    }
+    if (isPlainObject(val)) {
+      for (const key in val) {
+        if (Object.hasOwnProperty.call(val, key)) {
+          if (isPrimitive(val[key]))
+            val[key] = crypt.encrypt(val[key])
+          else
+            this.encryptPrimitiveValuesRecursive(val[key])
+        }
+      }
+    }
+    else if (Array.isArray(val)) {
+      val.forEach((v, i) => {
+        if (isPrimitive(v))
+          val[i] = crypt.encrypt(v)
+        else
+          this.encryptPrimitiveValuesRecursive(v)
+      })
+    }
   }
 
   encrypt(data) {
