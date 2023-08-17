@@ -1,6 +1,5 @@
 {
   "name": "vue-micro",
-  "version": "1.0.0",
   "description": "micro application",
   "main": "index.js",
   "scripts": {

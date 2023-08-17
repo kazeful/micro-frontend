@@ -1,6 +1,5 @@
 {
   "name": "vue-common",
-  "version": "1.0.0",
   "description": "common modules",
   "main": "index.js",
   "scripts": {

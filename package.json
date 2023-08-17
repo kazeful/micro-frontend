@@ -1,6 +1,5 @@
 {
   "name": "micro-frontend",
-  "version": "0.0.0",
   "packageManager": "pnpm@8.3.1",
   "description": "Implementation of micro front end based on module federation",
   "author": "Wind",
