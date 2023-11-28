@@ -1,6 +1,6 @@
 {
   "name": "micro-frontend",
-  "packageManager": "pnpm@8.3.1",
+  "packageManager": "pnpm@8.11.0",
   "description": "Implementation of micro front end based on module federation",
   "author": "Wind",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "pnpm": ">=8.0"
   },
   "scripts": {
+    "postinstall": "pnpm link --global naive-directives",
     "build": "pnpm -r --filter=!docs build",
     "dev": "pnpm -r --filter=!docs dev",
     "docs:build": "pnpm --filter docs build",

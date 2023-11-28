@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Vue Micro</h1>
+    <h2>HMR is available</h2>
   </div>
 </template>
 

@@ -41,18 +41,6 @@ module.exports = {
       },
     },
   },
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-    },
-  },
   plugins: ['demo-container'],
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@': '/../vue-common/src',
-      },
-    },
-  },
   evergreen: true,
 }

@@ -13,14 +13,8 @@
 
 <script>
 import { defineComponent } from 'vue'
-import waves from '@common/directives/waves'
-import spring from '@common/directives/spring'
 
 export default defineComponent({
-  directives: {
-    waves,
-    spring,
-  },
   components: {
     MicroApp: () => import('@micro/App.vue'),
   },

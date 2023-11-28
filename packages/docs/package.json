@@ -9,9 +9,11 @@
   "dependencies": {
     "core-js": "^2.6.12",
     "element-ui": "^2.15.9",
-    "vue": "^2.7.14"
+    "vue": "^2.7.14",
+    "vue-common": "workspace:*"
   },
   "devDependencies": {
+    "html-entities": "^1.4.0",
     "vuepress": "^1.9.7",
     "vuepress-plugin-demo-container": "^0.2.0"
   }
