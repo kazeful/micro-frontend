@@ -26,12 +26,6 @@
     "build": "pnpm -r --filter=!docs build",
     "dev": "pnpm -r --filter=!docs dev",
     "docs:build": "pnpm --filter docs build",
-    "docs:dev": "pnpm --filter docs dev",
-    "lint": "eslint . --ext .js,.vue"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config-basic": "^0.38.2",
-    "eslint": "^8.37.0",
-    "eslint-plugin-vue": "^9.10.0"
+    "docs:dev": "pnpm --filter docs dev"
   }
 }
